@@ -1,0 +1,28 @@
+@startuml
+class JDBC.JDBC {
+- Connection con
+- {static} String URL
+- {static} String USER
+- {static} String PASSWORD
++ void finalize()
++ ResultSet select_name(String)
++ ResultSet select_phone(String)
++ Boolean insert(String,String,String,String)
++ void update_name(int,String)
++ void update_phone(int,String)
++ void update_email(int,String)
++ void update_address(int,String)
++ Boolean delete(int)
+}
+class Logic.Logic {
++ ResultSet ViewContact(String)
++ boolean AddContact(String,String,String,String)
++ void ModifyContact(int,int,String)
++ boolean DeleteContact(int)
+}
+class GUI.GUI {
++ {static} void main(String[])
+}
+Logic.Logic..>JDBC.JDBC
+GUI.GUI ..>Logic.Logic
+@enduml
